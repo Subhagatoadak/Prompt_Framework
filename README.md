@@ -36,10 +36,10 @@ Once you’ve installed the package, you can easily import and start using the *
 First, import the `PromptFramework` class into your Python script:
 
 ```python
-from Prompt_Framework import PromptFramework
+from Prompt_Framework import Prompt_Framework
 
 # Initialize with common parameters
-prompt_tool = PromptFramework(context="Customer service inquiry.", output_type="solution", style="polite")
+prompt_tool = Prompt_Framework(context="Customer service inquiry.", output_type="solution", style="polite")
 ```
 
 ### **2. Switch to a Framework**
