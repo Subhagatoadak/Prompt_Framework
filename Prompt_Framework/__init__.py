@@ -1,6 +1,6 @@
 # __init__.py
 
-from .Prompt_Framework import PromptFramework
+from .Prompt_Framework import Prompt_Framework
 
 # You can also import specific frameworks directly for convenience if needed
 from .prompt_framework import (
