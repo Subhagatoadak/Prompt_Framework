@@ -10,35 +10,35 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # You can change this to other OS if needed
 
     steps:
+      # Step 1: Checkout the repository code
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # Step 2: Set up Conda using Miniconda (using conda-incubator/setup-miniconda action)
       - name: Set up Conda
         uses: conda-incubator/setup-miniconda@v2
         with:
-          miniconda-version: 'latest'  # Or specify a specific version of Miniconda
-          auto-update-conda: true
+          miniconda-version: 'latest'  # You can specify a particular version of Miniconda if needed
+          auto-update-conda: true      # Ensures Conda is updated to the latest version
 
-      - name: Initialize Conda
+      # Step 3: Install dependencies and create the Conda environment
+      - name: Create and install Conda environment
         run: |
-          conda init bash  # Initialize Conda for the shell (important for non-interactive shells)
-          source ~/.bashrc  # Ensure the changes take effect
+          conda env update --file environment.yml --name base  # Create or update the environment from environment.yml
 
-      - name: Create and activate Conda environment
+      # Step 4: Install dependencies using pip (if needed)
+      - name: Install Python dependencies using pip
         run: |
-          conda env update --file environment.yml --name base  # Create or update the environment using environment.yml
-          conda activate prompt-framework-env  # Activate the environment
+          conda run -n base pip install .  # Install the Python package in the Conda environment
 
-      - name: Install dependencies using pip
-        run: |
-          pip install .  # Install your package
-
+      # Step 5: Set the PYTHONPATH environment variable (if necessary)
       - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=$(pwd)/Prompt_Framework" >> $GITHUB_ENV  # Set PYTHONPATH if necessary
+        run: echo "PYTHONPATH=$(pwd)/Prompt_Framework" >> $GITHUB_ENV  # Set PYTHONPATH to the correct folder
 
-      - name: Run tests
+      # Step 6: Run tests using pytest (within the Conda environment)
+      - name: Run tests with Conda environment
         run: |
-          pytest tests/  # Run the tests
+          conda run -n base pytest tests/  # Run tests using pytest within the 'base' Conda environment
