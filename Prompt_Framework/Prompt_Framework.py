@@ -1,4 +1,4 @@
-class PromptFramework:
+class Prompt_Framework:
     """
     A class for generating prompts based on various prompt engineering frameworks. 
     This allows easy switching between frameworks while maintaining common inputs.
