@@ -29,5 +29,5 @@ __all__ = [
     "pain_framework",
     "coast_framework",
     "roses_framework",
-    "react_framework"
+    "react_framework",
 ]
