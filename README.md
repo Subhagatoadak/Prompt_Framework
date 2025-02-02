@@ -164,7 +164,7 @@ Explanation: Describe the task or problem
 PromptFramework Class
 Initialization
 ```python
-prompt_tool = PromptFramework(context="Context information", output_type="desired_output", style="desired_style")
+prompt_tool = Prompt_Framework(context="Context information", output_type="desired_output", style="desired_style")
 ```
 context (str): Background information for the prompt.
 output_type (str): The expected output format (e.g., "solution", "steps").
