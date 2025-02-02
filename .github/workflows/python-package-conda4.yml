@@ -1,0 +1,39 @@
+name: Python package using Conda
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Conda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniconda-version: 'latest'  # Or specify a specific version of Miniconda
+          auto-update-conda: true
+
+      - name: Create and activate Conda environment
+        run: |
+          conda env update --file environment.yml --name base  # Create or update the environment using environment.yml
+          conda activate prompt-framework-env  # Activate the environment
+
+      - name: Install dependencies using pip
+        run: |
+          pip install .  # Install your package
+
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=$(pwd)/Prompt_Framework" >> $GITHUB_ENV  # Set PYTHONPATH if necessary
+
+      - name: Run tests
+        run: |
+          pytest tests/  # Run the tests
