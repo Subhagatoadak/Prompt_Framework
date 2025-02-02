@@ -1,17 +1,17 @@
 # tests/test_prompt_framework.py
 
 import pytest
-from Prompt_Framework.Prompt_Framework import PromptFramework
+from Prompt_Framework.Prompt_Framework import Prompt_Framework
 
 def test_initialization():
     # Test initialization with common parameters
-    prompt_tool = PromptFramework(context="Customer service inquiry.", output_type="solution", style="polite")
+    prompt_tool = Prompt_Framework(context="Customer service inquiry.", output_type="solution", style="polite")
     assert prompt_tool.context == "Customer service inquiry."
     assert prompt_tool.output_type == "solution"
     assert prompt_tool.style == "polite"
 
 def test_switch_to_race_framework():
-    prompt_tool = PromptFramework(context="Customer service inquiry.", output_type="solution", style="polite")
+    prompt_tool = Prompt_Framework(context="Customer service inquiry.", output_type="solution", style="polite")
     
     # Switch to RACE framework
     prompt_tool.switch_framework("race")
@@ -27,7 +27,7 @@ def test_switch_to_race_framework():
     assert "Provide helpful and polite product details" in race_prompt
 
 def test_switch_to_ape_framework():
-    prompt_tool = PromptFramework(context="Customer service inquiry.", output_type="solution", style="polite")
+    prompt_tool = Prompt_Framework(context="Customer service inquiry.", output_type="solution", style="polite")
     
     # Switch to APE framework
     prompt_tool.switch_framework("ape")
@@ -43,7 +43,7 @@ def test_switch_to_ape_framework():
     assert "Provide detailed account recovery instructions" in ape_prompt
 
 def test_invalid_framework():
-    prompt_tool = PromptFramework(context="Customer service inquiry.", output_type="solution", style="polite")
+    prompt_tool = Prompt_Framework(context="Customer service inquiry.", output_type="solution", style="polite")
     
     # Try to switch to an invalid framework
     with pytest.raises(ValueError):
