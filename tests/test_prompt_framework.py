@@ -1,7 +1,7 @@
 # tests/test_prompt_framework.py
 
 import pytest
-from Prompt_Framework import PromptFramework
+from .Prompt_Framework import PromptFramework
 
 def test_initialization():
     # Test initialization with common parameters
