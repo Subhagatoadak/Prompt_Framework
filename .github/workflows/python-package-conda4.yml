@@ -1,4 +1,4 @@
-name: Python package using Conda
+name: Python package CI
 
 on:
   push:
@@ -21,6 +21,11 @@ jobs:
         with:
           miniconda-version: 'latest'  # Or specify a specific version of Miniconda
           auto-update-conda: true
+
+      - name: Initialize Conda
+        run: |
+          conda init bash  # Initialize Conda for the shell (important for non-interactive shells)
+          source ~/.bashrc  # Ensure the changes take effect
 
       - name: Create and activate Conda environment
         run: |
