@@ -29,15 +29,15 @@ class Prompt_Framework:
         self.framework = None
 
     def switch_framework(self, framework: str):
-    """
-    Switches to a specific prompt engineering framework based on the user's choice.
-    
-    Args:
-    framework (str): The framework to switch to (e.g., "costar", "care", "race").
-    
-    Raises:
-    ValueError: If an invalid framework name is provided.
-    """
+        """
+        Switches to a specific prompt engineering framework based on the user's choice.
+        
+        Args:
+        framework (str): The framework to switch to (e.g., "costar", "care", "race").
+        
+        Raises:
+        ValueError: If an invalid framework name is provided.
+        """
         frameworks = {
             "costar": self.costar_framework,
             "care": self.care_framework,
