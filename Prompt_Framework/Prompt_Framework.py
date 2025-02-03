@@ -29,40 +29,34 @@ class Prompt_Framework:
         self.framework = None
 
     def switch_framework(self, framework: str):
-        """
-        Switches to a specific prompt engineering framework based on the user's choice.
+    """
+    Switches to a specific prompt engineering framework based on the user's choice.
+    
+    Args:
+    framework (str): The framework to switch to (e.g., "costar", "care", "race").
+    
+    Raises:
+    ValueError: If an invalid framework name is provided.
+    """
+        frameworks = {
+            "costar": self.costar_framework,
+            "care": self.care_framework,
+            "race": self.race_framework,
+            "ape": self.ape_framework,
+            "create": self.create_framework,
+            "tag": self.tag_framework,
+            "creo": self.creo_framework,
+            "rise": self.rise_framework,
+            "pain": self.pain_framework,
+            "coast": self.coast_framework,
+            "roses": self.roses_framework,
+            "react": self.react_framework,
+        }
         
-        Args:
-        framework (str): The framework to switch to (e.g., "costar", "care", "race").
-        
-        Raises:
-        ValueError: If an invalid framework name is provided.
-        """
         framework = framework.lower()
-        if framework == "costar":
-            self.framework = self.costar_framework
-        elif framework == "care":
-            self.framework = self.care_framework
-        elif framework == "race":
-            self.framework = self.race_framework
-        elif framework == "ape":
-            self.framework = self.ape_framework
-        elif framework == "create":
-            self.framework = self.create_framework
-        elif framework == "tag":
-            self.framework = self.tag_framework
-        elif framework == "creo":
-            self.framework = self.creo_framework
-        elif framework == "rise":
-            self.framework = self.rise_framework
-        elif framework == "pain":
-            self.framework = self.pain_framework
-        elif framework == "coast":
-            self.framework = self.coast_framework
-        elif framework == "roses":
-            self.framework = self.roses_framework
-        elif framework == "react":
-            self.framework = self.react_framework
+        
+        if framework in frameworks:
+            self.framework = frameworks[framework]
         else:
             raise ValueError(f"Invalid framework: {framework}. Please choose a valid framework.")
 
