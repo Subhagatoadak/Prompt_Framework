@@ -1,0 +1,32 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: read           # for checkout
+  id-token: write          # needed for OIDC
+  packages: write          # so we can publish
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: pypi       # matches the env name you created (optional)
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Build sdist & wheel
+        run: python -m pip install --upgrade build && python -m build
+
+      - name: Publish to PyPI via OIDC
+        uses: pypa/gh-action-pypi-publish@v1
+        with:
+          # By default this action will use OIDC to exchange for a short‑lived token
+          registry-url: https://upload.pypi.org/legacy/
