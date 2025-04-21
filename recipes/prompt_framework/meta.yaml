@@ -1,0 +1,33 @@
+{% set name = "prompt_framework" %}
+{% set version = "0.1.0" %}
+---
+package:
+  name: {{ name|lower }}
+  version: "{{ version }}"
+
+source:
+  git_url: https://github.com/Subhagatoadak/Prompt_Framework.git
+  git_tag: v{{ version }}
+
+build:
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+
+requirements:
+  host:
+    - python
+    - pip
+  run:
+    - python
+    # - click
+    # - pydantic >=1.8
+
+about:
+  home: https://github.com/Subhagatoadak/Prompt_Framework
+  license: MIT
+  license_file: LICENSE
+  summary: "Flexible prompt‑engineering frameworks (RACE, CARE, APE, …)"
+
+extra:
+  recipe-maintainers:
+    - SubhagatoAdak
