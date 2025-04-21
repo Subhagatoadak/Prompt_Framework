@@ -29,6 +29,6 @@ jobs:
           python -m build
 
       - name: Publish via OIDC
-        uses: pypa/gh-action-pypi-publish@v1
+        uses: pypa/gh-action-pypi-publish@v1.12.4
         with:
           registry-url: https://upload.pypi.org/legacy/
