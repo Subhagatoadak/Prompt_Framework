@@ -8,7 +8,7 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 
 setup(
     name="Prompt_Framework",
-    version="0.1",
+    version="1.0.0",
     packages=find_packages(),
     author="Subhagato Adak",
     author_email="subhagato.adak@gmail.com",
