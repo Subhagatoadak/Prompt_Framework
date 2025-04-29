@@ -1,0 +1,15 @@
+@startuml
+actor User
+participant PromptFramework
+participant TemplateManager
+participant PromptTuner
+participant LLM
+
+User -> PromptFramework: switch_framework(name)
+PromptFramework -> TemplateManager: get(name)
+TemplateManager -> PromptTuner: select_version
+PromptFramework -> LLM: call(prompt)
+LLM --> PromptFramework: response
+User --> PromptFramework: record_reward(score)
+PromptFramework -> PromptTuner: record_reward
+@enduml

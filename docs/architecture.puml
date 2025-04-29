@@ -1,0 +1,9 @@
+@startuml
+package "Prompt Framework" {
+  PromptFramework --> TemplateManager
+  PromptFramework --> PromptTuner
+  PromptFramework --> PromptValidator
+  PromptFramework --> PromptSanitizer
+  TemplateManager --> PromptTuner
+}
+@enduml
